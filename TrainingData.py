@@ -5,7 +5,7 @@ import time
 from PIL import ImageGrab
 
 
-hash_dict = {'W':0, 'S':1, 'A':2, 'D':3}
+hash_dict = {'W':0, 'S':1, 'A':2, 'D':3, 'B':4, 'V':5}
 X = []
 y = []
 
@@ -61,10 +61,11 @@ while True:
     keys = key_check()
     if "Q" in keys:
         break;
-    one_hot = [0,0,0,0]
+    one_hot = [0,0,0,0,0,0]
     for u in hash_dict.keys():
         if u in keys:
             one_hot[hash_dict[u]] = 1
+    print(one_hot)
     X.append(printscreen)
     y.append(one_hot)
 np.save("X.npy",X)
